@@ -1,8 +1,9 @@
 import React, { useMemo } from 'react';
+import Toggle from '../../components/Toggle';
 import emojis from '../../utils/emojis';
 import { Container, Profile, Username, Welcome } from './styles';
 
-export const Header: React.FC = () => {
+const Header: React.FC = () => {
     const emoji = useMemo(() => {
         const index = Math.floor(Math.random() * emojis.length);
 
@@ -11,7 +12,7 @@ export const Header: React.FC = () => {
 
     return (
         <Container>
-            <h1>Toggle</h1>
+            <Toggle></Toggle>
 
             <Profile>
                 <Welcome>Olá {emoji}</Welcome>
