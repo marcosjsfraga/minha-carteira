@@ -1,9 +1,10 @@
 import React from 'react';
 import ContentHeader from '../../components/ContentHeader';
+import HistoryFinanceCard from '../../components/HistoryFinanceCard';
 import SelectInput from '../../components/SelectInput';
-import { Container } from './styles';
+import { Container, Content } from './styles';
 
-const Dashboard: React.FC = () => {
+const List: React.FC = () => {
     const months = [
         { label: 'Janeiro', value: 'Janeiro' },
         { label: 'Fevereiro', value: 'Fevereiro' },
@@ -29,12 +30,21 @@ const Dashboard: React.FC = () => {
 
     return (
         <Container>
-            <ContentHeader title="Dashboard" lineColor="#d39cdf">
+            <ContentHeader title="Saídas" lineColor="#d39cdf">
                 <SelectInput options={months} />
                 <SelectInput options={years} />
             </ContentHeader>
+
+            <Content>
+                <HistoryFinanceCard
+                    tagColor="#e44c4e"
+                    title="Compra de padaria"
+                    subtitle="99/99/999"
+                    amount="R$ 12,34"
+                />
+            </Content>
         </Container>
     );
 };
 
-export default Dashboard;
+export default List;

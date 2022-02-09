@@ -11,7 +11,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    margin-bottom: 25px;
+    margin-bottom: 50px;
 `;
 
 export const TitleContainer = styled.div<ITitleContainerProps>`
