@@ -27,6 +27,8 @@ interface IData {
 
 const List: React.FC<IRouteParams> = ({ match }) => {
     const [data, setData] = useState<IData[]>([]);
+    const [monthSelected, setMonthSelected] = useState<string>(String(new Date().getMonth() + 1));
+    const [yearSelected, setYearSelected] = useState<string>(String(new Date().getFullYear()));
 
     const { type } = match.params;
 
@@ -47,31 +49,39 @@ const List: React.FC<IRouteParams> = ({ match }) => {
     }, [type]);
 
     const months = [
-        { label: 'Janeiro', value: '01' },
-        { label: 'Fevereiro', value: '02' },
-        { label: 'Março', value: '03' },
-        { label: 'Abril', value: '04' },
-        { label: 'Maio', value: '05' },
-        { label: 'Junho', value: '06' },
-        { label: 'Julho', value: '07' },
-        { label: 'Agosto', value: '08' },
-        { label: 'Setembro', value: '09' },
-        { label: 'Outubro', value: '10' },
-        { label: 'Novembro', value: '11' },
-        { label: 'Dezembro', value: '12' },
+        { label: 'Janeiro', value: 1 },
+        { label: 'Fevereiro', value: 2 },
+        { label: 'Março', value: 3 },
+        { label: 'Abril', value: 4 },
+        { label: 'Maio', value: 5 },
+        { label: 'Junho', value: 6 },
+        { label: 'Julho', value: 7 },
+        { label: 'Agosto', value: 8 },
+        { label: 'Setembro', value: 9 },
+        { label: 'Outubro', value: 10 },
+        { label: 'Novembro', value: 11 },
+        { label: 'Dezembro', value: 12 },
     ];
 
     const years = [
-        { label: '2022', value: '2022' },
-        { label: '2021', value: '2021' },
-        { label: '2020', value: '2020' },
         { label: '2019', value: '2019' },
+        { label: '2020', value: '2020' },
+        { label: '2021', value: '2021' },
+        { label: '2022', value: '2022' },
     ];
 
     useEffect(() => {
-        const response = listData.map(item => {
+        const filteredData = listData.filter(item => {
+            const date = new Date(item.date);
+            const month = String(date.getMonth() + 1);
+            const year = String(date.getFullYear());
+
+            return month === monthSelected && year === yearSelected;
+        });
+
+        const dataList = filteredData.map(item => {
             return {
-                id: String(Math.random() * data.length),
+                id: String(new Date().getTime()) + item.amount,
                 description: item.description,
                 amountFormatted: formatCurrency(Number(item.amount)),
                 frequency: item.frequency,
@@ -80,14 +90,22 @@ const List: React.FC<IRouteParams> = ({ match }) => {
             };
         });
 
-        setData(response);
-    }, []);
+        setData(dataList);
+    }, [data.length, listData, monthSelected, yearSelected]);
 
     return (
         <Container>
             <ContentHeader title={urlParam.title} lineColor={urlParam.lineColor}>
-                <SelectInput options={months} />
-                <SelectInput options={years} />
+                <SelectInput
+                    options={months}
+                    onChange={e => setMonthSelected(e.target.value)}
+                    defaultValue={monthSelected}
+                />
+                <SelectInput
+                    options={years}
+                    onChange={e => setYearSelected(e.target.value)}
+                    defaultValue={yearSelected}
+                />
             </ContentHeader>
 
             <Filters>
