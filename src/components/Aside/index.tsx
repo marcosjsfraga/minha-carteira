@@ -15,10 +15,10 @@ const Aside: React.FC = () => {
                 <MenuLink href="/dashboard">
                     <MdDashboard /> Dashboard
                 </MenuLink>
-                <MenuLink href="/list/entry-balance">
+                <MenuLink href="/list/gains">
                     <MdArrowDownward /> Entradas
                 </MenuLink>
-                <MenuLink href="/list/exit-balance">
+                <MenuLink href="/list/expenses">
                     <MdArrowUpward /> Saídas
                 </MenuLink>
                 <MenuLink href="#">

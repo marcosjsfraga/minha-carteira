@@ -35,6 +35,11 @@ export const Container = styled.li`
 
         padding-left: 10px;
     }
+
+    > div span {
+        font-weight: 900;
+        font-size: 22px;
+    }
 `;
 
 export const Tag = styled.div<ITagProps>`
