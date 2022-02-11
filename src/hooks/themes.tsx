@@ -18,6 +18,7 @@ interface ITheme {
         white: string;
         black: string;
         gray: string;
+        blue: string;
 
         success: string;
         info: string;
