@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { AuthProvider } from './hooks/auth';
 import { ThemeProvider } from './hooks/themes';
 
 ReactDOM.render(
     <React.StrictMode>
         <ThemeProvider>
-            <App />
+            <AuthProvider>
+                <App />
+            </AuthProvider>
         </ThemeProvider>
     </React.StrictMode>,
     document.getElementById('root'),

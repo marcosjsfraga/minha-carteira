@@ -1,9 +1,12 @@
 import React from 'react';
 import { MdArrowDownward, MdArrowUpward, MdDashboard, MdExitToApp } from 'react-icons/md';
 import logoImg from '../../assets/finance_icon.png';
-import { Container, Header, Logo, MenuContainer, MenuLink, Title } from './styles';
+import { useAuth } from '../../hooks/auth';
+import { Container, Header, Logo, MenuButton, MenuContainer, MenuLink, Title } from './styles';
 
 const Aside: React.FC = () => {
+    const { signOut } = useAuth();
+
     return (
         <Container>
             <Header>
@@ -12,7 +15,7 @@ const Aside: React.FC = () => {
             </Header>
 
             <MenuContainer>
-                <MenuLink href="/dashboard">
+                <MenuLink href="/">
                     <MdDashboard /> Dashboard
                 </MenuLink>
                 <MenuLink href="/list/gains">
@@ -21,9 +24,9 @@ const Aside: React.FC = () => {
                 <MenuLink href="/list/expenses">
                     <MdArrowUpward /> Saídas
                 </MenuLink>
-                <MenuLink href="#">
+                <MenuButton onClick={signOut}>
                     <MdExitToApp /> Sair
-                </MenuLink>
+                </MenuButton>
             </MenuContainer>
         </Container>
     );

@@ -54,3 +54,29 @@ export const MenuLink = styled.a`
         margin-right: 20px;
     }
 `;
+
+export const MenuButton = styled.button`
+    display: flex;
+    align-items: center;
+
+    color: ${props => props.theme.colors.black};
+
+    border: none;
+    background-color: transparent;
+
+    margin: 10px 0;
+
+    font-size: 16px;
+    font-weight: 900;
+
+    transition: opacity 0.3s;
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    > svg {
+        font-size: 20px;
+        margin-right: 20px;
+    }
+`;
