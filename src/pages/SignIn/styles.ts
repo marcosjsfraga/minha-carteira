@@ -44,17 +44,17 @@ export const Logo = styled.div`
     > span {
         color: ${props => props.theme.colors.black};
         margin-left: 10px;
-        font-size: 40px;
+        font-size: 35px;
         font-weight: 900;
     }
 
     > img {
-        width: 90px;
+        width: 70px;
     }
 `;
 
 export const Form = styled.form`
-    width: 400px;
+    width: 350px;
     height: 400px;
 
     padding: 30px;

@@ -10,8 +10,6 @@ export const Container = styled.div<IContainderProps>`
 
     margin: 10px 0;
 
-    overflow: hidden;
-
     background-color: ${props => props.color};
     color: #fff;
 
@@ -19,6 +17,7 @@ export const Container = styled.div<IContainderProps>`
     padding: 10px 20px;
 
     position: relative;
+    overflow: hidden;
 
     > span {
         font-size: 24px;
@@ -48,5 +47,20 @@ export const Container = styled.div<IContainderProps>`
 
         top: -20px;
         right: -20px;
+    }
+
+    @media (max-width: 770px) {
+        > span {
+            font-size: 14px;
+        }
+
+        > h1 {
+            word-wrap: break-word;
+            font-size: 20px;
+        }
+    }
+
+    @media (max-width: 420px) {
+        width: 100%;
     }
 `;
